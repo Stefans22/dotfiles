@@ -1,0 +1,18 @@
+{{ if not .xmonad -}}
+.config/gtk-3.0
+.config/redshift.conf
+.config/redshift
+.xmonad
+{{- end }}
+{{ if .work -}}
+.ssh/authorized_keys
+{{- end }}
+{{ if not .gnupg -}}
+.ssh/config
+.gnupg
+.pass
+{{- end }}
+{{ if (ne .chezmoi.os "darwin") -}}
+.local/bin/sync-env
+Library/
+{{- end }}

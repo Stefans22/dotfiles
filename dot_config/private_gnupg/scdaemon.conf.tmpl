@@ -1,0 +1,6 @@
+{{ if (eq .chezmoi.os "darwin") -}}
+reader-port "Yubico YubiKey OTP+FIDO+CCID"
+{{ else -}}
+reader-port "Yubico Yubi"
+{{ end -}}
+

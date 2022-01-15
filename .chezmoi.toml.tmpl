@@ -1,0 +1,21 @@
+{{- $work := promptBool "work machine" -}}
+{{- $xmonad := promptBool "setup xmonad session" -}}
+[data]
+	name = "{{ promptString "name to use" }}"
+	email = "{{ promptString "email to use" }}"
+	work = {{ $work }}
+{{- if $work }}
+	gnupg = false
+{{- else }}
+	gnupg = {{ promptBool "setup gnupg, ssh and pass" }}
+{{- end }}
+{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "debian") }}
+	xmonad = {{ $xmonad }}
+{{- if $xmonad }}
+	latitude = "{{ promptString "location latitude" }}"
+	longitude = "{{ promptString "location longitude" }}"
+{{- end }}
+{{- else }}
+	xmonad = false
+{{- end }}
+

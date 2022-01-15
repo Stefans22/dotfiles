@@ -1,0 +1,41 @@
+{{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.idLike "debian") -}}
+#!/bin/sh
+
+set -e
+
+echo "### Installing packages"
+xargs sudo apt-get install <<EOF
+vim
+git
+zsh
+tmux
+htop
+mc
+ncdu
+mosh
+{{ if (.gnupg) -}}
+gnupg
+pcscd
+scdaemon
+pass
+{{ end -}}
+{{ if (.xmonad) -}}
+xmonad
+xmobar
+unclutter
+compton
+hsetroot
+redshift
+libnotify-bin
+trayer
+xfce4-terminal
+suckless-tools
+{{ end -}}
+{{ if and .xmonad .gnupg -}}
+webext-browserpass
+{{ end -}}
+EOF
+{{ end -}}
+{{ end -}}
+

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+hsetroot -solid '#33393b' &
+xsetroot -cursor_name left_ptr &
+xset s off &
+xset dpms 0 1800 0 &
+xrdb -merge ~/.Xdefaults &
+source $HOME/.xmonad/monitors.sh
+
+compton -f -r 0 -b
+unclutter -root -idle 3 &
+
+trayer --edge right --edge top --align right --widthtype percent --width 5 --height 26 --expand false &
+
+gnome-keyring-daemon -s -d
+nm-applet &
+
+if [ -x '/usr/bin/redshift' ]; then
+	/usr/bin/redshift &
+fi
+
+if [ -x '/usr/bin/nextcloud' ]; then
+	/usr/bin/nextcloud --background &
+fi
+
+if [ -x '/usr/bin/thunar' ]; then
+	/usr/bin/thunar --daemon &
+fi
+
+# $HOME/.xplanet/xplanet.sh > $HOME/.xplanet/session.log 2>&1 &
+
+rm $HOME/.xmonad/xmonad.state
+#dbus-launch --exit-with-x11 &
+exec dbus-launch --sh-syntax --exit-with-session xmonad >> /tmp/xmonad.log
+

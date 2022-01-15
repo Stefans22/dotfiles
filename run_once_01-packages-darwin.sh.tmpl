@@ -1,0 +1,21 @@
+{{ if (eq .chezmoi.os "darwin") -}}
+#!/bin/sh
+
+set -e
+
+echo "### Installing packages"
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "tmux"
+brew "htop"
+brew "mc"
+brew "ncdu"
+brew "mosh"
+cask "macvim"
+{{ if .gnupg }}
+brew "pass"
+tap "amar1729/formulae"
+brew "browserpass"
+{{ end }}
+EOF
+{{ end -}}
+

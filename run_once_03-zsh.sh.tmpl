@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+echo "### Installing oh-my-zsh"
+if [ ! -d "$XDG_DATA_HOME/oh-my-zsh" ] ; then
+	git clone https://github.com/ohmyzsh/ohmyzsh.git $XDG_DATA_HOME/oh-my-zsh
+fi
+
+echo "### Setting zsh as default shell"
+#chsh -s /usr/bin/zsh
+

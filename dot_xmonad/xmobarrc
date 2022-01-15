@@ -1,0 +1,27 @@
+Config { font = "xft:Ubuntu Mono:style=Regular,size=10"
+        , bgColor = "#33393b"
+        , fgColor = "#eeeeec"
+        , position = TopW L 100
+        , commands = [ Run Date "%a %-d.%b %k:%M" "date" 100
+                     , Run StdinReader
+                     , Run Battery [ "--template" , "<acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "darkred"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkgreen"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% (<timeleft>)   "
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>   "
+                                       -- charged status
+                                       , "-i"	, ""
+                             ] 100
+                     ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "%StdinReader%  }{ %battery%%date%"
+        }
+
