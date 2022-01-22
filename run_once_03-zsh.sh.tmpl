@@ -4,7 +4,7 @@ set -e
 
 echo "### Installing oh-my-zsh"
 if [ ! -d "$XDG_DATA_HOME/oh-my-zsh" ] ; then
-	git clone https://github.com/ohmyzsh/ohmyzsh.git $XDG_DATA_HOME/oh-my-zsh
+	git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.local/share/oh-my-zsh
 fi
 
 echo "### Setting zsh as default shell"
