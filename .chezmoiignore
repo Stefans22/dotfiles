@@ -11,9 +11,5 @@
 {{ if not .gnupg -}}
 .ssh/config
 .gnupg
-.pass
-{{- end }}
-{{ if (ne .chezmoi.os "darwin") -}}
-.local/bin/sync-env
-Library/
+.password-store
 {{- end }}

@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-[ -s "$GNUPGHOME" ] && /bin/launchctl setenv GNUPGHOME "$GNUPGHOME"
-[ -s "$PASSWORD_STORE_DIR" ] && /bin/launchctl setenv PASSWORD_STORE_DIR "$PASSWORD_STORE_DIR"
-
