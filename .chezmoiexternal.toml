@@ -1,3 +1,4 @@
+{{ if .xmonad -}}
 [".local/share/icons"]
     type = "archive"
     url = "https://github.com/rtlewis88/rtl88-Themes/raw/1.0/Solarized-Colors-gtk-theme-iconpack_1.0.tar.gz"
@@ -7,4 +8,5 @@
     type = "archive"
     url = "https://github.com/rtlewis88/rtl88-Themes/raw/1.0/solarized-dark-gtk-theme-colorpack_1.3.tar.gz"
     extract = true
+{{- end }}
 

@@ -3,7 +3,6 @@
 .config/redshift.conf
 .config/redshift
 .xmonad
-.chezmoiexternal.toml
 {{- end }}
 {{ if .work -}}
 .ssh/authorized_keys
