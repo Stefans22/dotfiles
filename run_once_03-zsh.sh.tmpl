@@ -8,5 +8,7 @@ if [ ! -d "$XDG_DATA_HOME/oh-my-zsh" ] ; then
 fi
 
 echo "### Setting zsh as default shell"
-#chsh -s /usr/bin/zsh
+if [ -x /usr/bin/zsh ] ; then
+	chsh -s /usr/bin/zsh
+fi
 
