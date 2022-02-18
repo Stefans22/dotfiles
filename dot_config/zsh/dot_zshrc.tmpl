@@ -61,7 +61,7 @@ ZSH_DISABLE_COMPFIX=true
 {{   end -}}
 {{ end -}}
 {{ if .gnupg -}}
-{{   $plugins = mustAppend $plugins "gpg-agent" -}}
+{{   $plugins = mustAppend $plugins "gpg-agent pass" -}}
 {{ end -}}
 
 plugins=({{ $plugins | join " " }})
