@@ -46,11 +46,18 @@ ZSH_DISABLE_COMPFIX=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
+{{- $plugins := list "vi-mode" "last-working-dir" "history" "history-substring-search" "git" "tmux" "mosh" -}}
 {{ if (eq .chezmoi.os "darwin") -}}
-plugins=(vi-mode last-working-dir history history-substring-search git tmux mosh brew macos)
-{{- else if (eq .chezmoi.os "linux") }}
-plugins=(vi-mode last-working-dir history history-substring-search git tmux mosh debian)
-{{- end }}
+{{   $plugins = concat $plugins (list "brew" "macos") -}}
+{{ else -}}
+{{   if (eq .chezmoi.os "linux") -}}
+{{     if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+{{       $plugins = mustAppend $plugins "debian" }}
+{{     end -}}
+{{   end -}}
+{{ end -}}
+plugins=({{ $plugins | join " " }})
 
 {{ if (or .xmonad (ne .chezmoi.os "linux")) -}}
 # Disable oh-my-zsh tmux plugin
