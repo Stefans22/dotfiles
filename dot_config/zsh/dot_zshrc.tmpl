@@ -71,9 +71,11 @@ ZSH_TMUX_AUTOCONNECT=true
 # Setup software to be XDG compliant
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
+{{if .gnupg -}}
 # Setup gnupg agent
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
+{{ end -}}
 
 # Enable vim keybindings
 bindkey -v
