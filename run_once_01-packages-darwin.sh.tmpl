@@ -5,6 +5,7 @@ set -e
 
 echo "### Installing packages"
 brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "fzf"
 brew "tmux"
 brew "htop"
 brew "mc"
