@@ -46,8 +46,7 @@ ZSH_DISABLE_COMPFIX=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-
-{{- $plugins := list "vi-mode" "last-working-dir" "history" "history-substring-search" "git" "tmux" "mosh" -}}
+{{ $plugins := list "vi-mode" "last-working-dir" "history" "history-substring-search" "git" "tmux" "mosh" -}}
 {{ if (eq .chezmoi.os "darwin") -}}
 {{   $plugins = concat $plugins (list "brew" "macos") -}}
 {{ else -}}
@@ -63,7 +62,6 @@ ZSH_DISABLE_COMPFIX=true
 {{ if .gnupg -}}
 {{   $plugins = mustAppend $plugins "gpg-agent pass" -}}
 {{ end -}}
-
 plugins=({{ $plugins | join " " }})
 
 {{ if (or .xmonad (ne .chezmoi.os "linux")) -}}
